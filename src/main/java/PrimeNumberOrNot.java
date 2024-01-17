@@ -12,6 +12,11 @@ public class PrimeNumberOrNot {
         getPrimeNumber(number);
     }
 
+    /**
+     * Prints on the console if the given number is prime or not.
+     * @param number
+     * @return A boolean whether the number is prime or not.
+     */
     public static boolean getPrimeNumber(long number) {
         if(number <= 1) {
             System.out.println(number + " is not a prime number.");
