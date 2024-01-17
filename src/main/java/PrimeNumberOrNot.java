@@ -6,7 +6,7 @@ public class PrimeNumberOrNot {
     public static void main (String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Write an integer number: ");
+        System.out.println("Write a number: ");
         long number = scanner.nextLong();
 
         getPrimeNumber(number);
