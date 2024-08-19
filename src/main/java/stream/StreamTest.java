@@ -122,4 +122,3 @@ public class StreamTest {
         nameToLowerCase.forEach(employee -> System.out.println(employee.name));
     }
 }
-
