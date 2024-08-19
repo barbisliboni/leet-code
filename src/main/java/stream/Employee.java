@@ -17,6 +17,10 @@ public class Employee {
         return name;
     }
 
+    public String setName(String name) {
+        return this.name = name;
+    }
+
     public String getFunction() {
         return function;
     }

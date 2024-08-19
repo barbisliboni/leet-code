@@ -3,6 +3,7 @@ package src.main.java.stream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class StreamTest {
     public static void main(String[] args) {
@@ -91,7 +92,34 @@ public class StreamTest {
         Optional<Employee> findEmployee2 = employees2.stream()
                 .findAny();
 
+        System.out.println("------");
         System.out.println(findEmployee2.get().getName());
+
+        Boolean hasT = employees.stream()
+                .anyMatch(employee -> employee.getName().startsWith("T"));
+
+        System.out.println("------");
+        System.out.println(hasT);
+
+        Boolean hasZ = employees.stream()
+                .anyMatch(employee -> employee.getName().startsWith("Z"));
+
+        System.out.println("------");
+        System.out.println(hasZ);
+        System.out.println("------");
+
+        List<Employee> skipFirstTwoElements = employees.stream()
+                .skip(2) //skips the two first elements of the list
+                .toList();
+
+        skipFirstTwoElements.forEach(employee -> System.out.println(employee.name));
+        System.out.println("------");
+
+        Stream<Employee> nameToLowerCase = employees.stream()
+                .peek(employee -> employee.setName(employee.getName().toLowerCase())); //changes the state of the elements
+
+
+        nameToLowerCase.forEach(employee -> System.out.println(employee.name));
     }
 }
 
