@@ -1,8 +1,7 @@
 package src.main.java.stream;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamTest {
@@ -120,5 +119,79 @@ public class StreamTest {
 
 
         nameToLowerCase.forEach(employee -> System.out.println(employee.name));
+        System.out.println("------");
+
+        // calculate the average of a list of integers
+
+        getAverageNumber();
+
+        // convert a list of strings to lowercase
+        toLowerCase();
+
+        // convert a list of strings to uppercase
+        toUpperCase();
+
+        // sum of all even, odd numbers in a list
+        evenOddSum();
+
+        // remove all duplicate elements from a list
+        removeDuplicates();
+
+
     }
+
+    private static void getAverageNumber() {
+        //ArrayList<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = Arrays.asList(1, 32, 128, 2, 64, 4, 16);
+
+//        numbers.add(1);
+//        numbers.add(32);
+//        numbers.add(128);
+//        numbers.add(2);
+//        numbers.add(64);
+//        numbers.add(4);
+//        numbers.add(16);
+
+       Integer averageNumber =  numbers.stream().max(Integer::compare).get();
+
+       System.out.println("The average number is " + averageNumber);
+    }
+
+    private static void toLowerCase() {
+        List<String> names = Arrays.asList("Barbara", "Thiago", "John", "Max", "Catarina", "Gabrielle");
+
+        List<String> lowerCaseNames = names.stream().map(name -> name.toLowerCase()).toList();
+
+        System.out.println(lowerCaseNames);
+    }
+
+    private static void toUpperCase() {
+        List<String> names = Arrays.asList("Barbara", "Thiago", "John", "Max", "Catarina", "Gabrielle");
+
+        List<String> upperCaseNames = names.stream().map(name -> name.toUpperCase()).toList();
+
+        System.out.println(upperCaseNames);
+    }
+
+    private static void evenOddSum() {
+        List<Integer> numbers = Arrays.asList(2, 3, 6, 7, 10, 11);
+
+        List<Integer> evenNumbers = numbers.stream().filter(number -> number % 2 == 0).toList();
+        Integer evenNumbersSum = evenNumbers.stream().reduce(0, (evenNumber, sum) -> evenNumber + sum);
+
+        List<Integer> oddNumbers = numbers.stream().filter(number -> number % 2 != 0).toList();
+        Integer oddNumbersSum = oddNumbers.stream().reduce(0, (oddNumber, sum) -> oddNumber + sum);
+
+        System.out.println("Even numbers sum is " + evenNumbersSum);
+        System.out.println("Odd numbers sum is " + oddNumbersSum);
+    }
+
+    private static void removeDuplicates() {
+        List<String> names  = Arrays.asList("Barbara", "Barbara", "Thiago", "John", "John", "Max");
+
+        List<String> removedDuplicatedNames = names.stream().distinct().toList();
+
+        System.out.println(removedDuplicatedNames);
+    }
+
 }
