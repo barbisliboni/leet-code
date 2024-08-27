@@ -126,29 +126,39 @@ public class StreamTest {
         // calculate the average of a list of integers
 
         getAverageNumber();
+        System.out.println("------");
 
         // convert a list of strings to lowercase
         toLowerCase();
+        System.out.println("------");
 
         // convert a list of strings to uppercase
         toUpperCase();
+        System.out.println("------");
 
         // sum of all even, odd numbers in a list
         evenOddSum();
+        System.out.println("------");
 
         // remove all duplicate elements from a list
         removeDuplicates();
+        System.out.println("------");
 
         // count the number of strings in a list that start with a specific letter
         countStringNumber();
+        System.out.println("------");
 
         // sort a list of strings in alphabetical order, ascending and descending
         sortStringsAlphabetically();
+        System.out.println("------");
 
         // find the maximum and minimum values in a list of integers
         getMinMaxValue();
+        System.out.println("------");
 
-
+        // find the second smallest and largest elements in a list of integers
+        getSecondMinAndMaxValue();
+        System.out.println("------");
     }
 
     private static void getAverageNumber() {
@@ -232,7 +242,16 @@ public class StreamTest {
 
         System.out.println(maxNumber);
         System.out.println(minNumber);
-
     }
 
+    private static void getSecondMinAndMaxValue() {
+        List<Integer> numbers = Arrays.asList(1, 32, 128, 2, 64, 4, 16);
+
+        List<Integer> orderedNumbers = numbers.stream().sorted().toList();
+        int listSize = orderedNumbers.size();
+        Integer secondBiggestValue = orderedNumbers.get(listSize - 2);
+        System.out.println("The as-is list is " + numbers +
+                ". It ordered is " + orderedNumbers + ". The list`s size is " +
+                listSize + ", and the second biggest value is " + secondBiggestValue);
+    }
 }
