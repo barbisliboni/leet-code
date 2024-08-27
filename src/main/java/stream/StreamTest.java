@@ -121,6 +121,8 @@ public class StreamTest {
         nameToLowerCase.forEach(employee -> System.out.println(employee.name));
         System.out.println("------");
 
+        // exercises taken from https://www.w3resource.com/java-exercises/stream/index.php
+
         // calculate the average of a list of integers
 
         getAverageNumber();
@@ -136,6 +138,15 @@ public class StreamTest {
 
         // remove all duplicate elements from a list
         removeDuplicates();
+
+        // count the number of strings in a list that start with a specific letter
+        countStringNumber();
+
+        // sort a list of strings in alphabetical order, ascending and descending
+        sortStringsAlphabetically();
+
+        // find the maximum and minimum values in a list of integers
+        getMinMaxValue();
 
 
     }
@@ -192,6 +203,36 @@ public class StreamTest {
         List<String> removedDuplicatedNames = names.stream().distinct().toList();
 
         System.out.println(removedDuplicatedNames);
+    }
+
+    private static void countStringNumber() {
+        List<String> names = Arrays.asList("Barbara", "Bianca", "Thiago", "Bruna", "Tania", "Tatiane");
+
+        Long stringCountB = names.stream().filter(name -> name.startsWith("B")).count();
+        Long stringCountT = names.stream().filter(name -> name.startsWith("T")).count();
+
+        System.out.println(stringCountB + " strings starts with B, and " + stringCountT + " starts with T" );
+    }
+
+    private static void sortStringsAlphabetically() {
+        List<String> names = Arrays.asList("Barbara", "Thiago", "John", "Max", "Catarina", "Gabrielle");
+
+        List<String> sortedNamesAscending = names.stream().sorted().toList();
+        List<String> sortedNamesDescending = names.stream().sorted(Comparator.reverseOrder()).toList();
+
+        System.out.println(sortedNamesAscending);
+        System.out.println(sortedNamesDescending);
+    }
+
+    private static void getMinMaxValue() {
+        List<Integer> numbers = Arrays.asList(1, 32, 128, 2, 64, 4, 16);
+
+        Integer maxNumber = numbers.stream().max(Comparator.naturalOrder()).get();
+        Integer minNumber = numbers.stream().min(Comparator.naturalOrder()).get();
+
+        System.out.println(maxNumber);
+        System.out.println(minNumber);
+
     }
 
 }
